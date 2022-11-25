@@ -30,7 +30,7 @@
         state: latest
 
 - name: create directory, file and set timezone on all servers
-  host: all
+  hosts: all
   become: yes
   tasks:
     - name: create directory
@@ -47,7 +47,8 @@
       timezone:
         name: Africa/Lagos
 
-- name: Run Script
-  host: all
-  shell:
-    cmd: echo "Tunji DevOps"
+- name: Run Command
+  hosts: all
+  tasks:
+    - name: run echo
+      command: echo "Tunji DevOps"
