@@ -2,11 +2,11 @@
 10.0.0.115 ansible_ssh_user='ec2-user'
 
 [webservers]
-10.0.0.252 ansible_ssh_user='ec2-user'
+#10.0.0.252 ansible_ssh_user='ec2-user'
 10.0.0.22 ansible_ssh_user='ec2-user'
 
 [db]
-10.0.0.196 ansible_ssh_user='ubuntu' 
+#10.0.0.196 ansible_ssh_user='ubuntu' 
 
 [lb]
-10.0.0.90 ansible_ssh_user='ubuntu'
+#10.0.0.90 ansible_ssh_user='ubuntu'
