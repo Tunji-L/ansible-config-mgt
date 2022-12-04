@@ -6,14 +6,3 @@
   roles:
     - { role: nginx, when: enable_nginx_lb and load_balancer_is_required }
     - { role: apache, when: enable_apache_lb and load_balancer_is_required }
-
-- hosts: lb
-  become: true
-  tasks:
-    - name: enable configurations
-      shell: a2enmod rewrite proxy proxy_balancer proxy_http headers lbmethod_bytraffic
-      notify: restart apache2
-
-  handlers:
-    - name: restart apache2
-      service: name=apache2 state=restarted 

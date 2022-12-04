@@ -84,7 +84,7 @@ nginx_upstreams:
   keepalive: 16 # optional
   servers:
     - "web1 weight=3"
-    - "web1 weight=3"
+    - "web2 weight=3"
 
 nginx_log_format: |-
   '$remote_addr - $remote_user [$time_local] "$request" '

@@ -74,7 +74,7 @@ http {
     server {
         listen 80;
         location / {
-            proxy_pass httpp://myapp1;
+            proxy_pass http://myapp1;
         }
     }
 {% endblock %}
@@ -82,7 +82,7 @@ http {
 {% block http_includes %}
     include {{ nginx_conf_path }}/*.conf;
 {% if nginx_conf_path != nginx_vhost_path %}
-    include {{ nginx_vhost_path }}/*;
+    #include {{ nginx_vhost_path }}/*;
 {% endif %}
 {% endblock %}
 
