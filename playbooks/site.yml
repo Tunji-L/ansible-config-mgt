@@ -1,4 +1,4 @@
----
+# ---
 #- hosts: all
 #- name: deploy common playbook
 #  import_playbook: ../static-assignments/common.yml
@@ -13,16 +13,24 @@
 
 # - hosts: uat-webservers
 # - import_playbook: ../static-assignments/uat-webservers.yml
-#------------------------------------------------------
-
-- hosts: all
-  name: Include dynamic variables
-  tasks:
+# ------------------------------------------------------
+---
+- name: deploy common playbook
   import_playbook: ../static-assignments/common.yml
-  include: ../dynamic-assignments/env-vars.yml
   tags:
     - always
 
-- hosts: webservers
-  name: webserver assignment
-  import_playbook: ../static-assignment/uat-webservers.yml
+- name: Include env-var files
+  import_playbook: ../dynamic-assignments/env-vars.yml
+  tags:
+    - always
+
+- name: webserver file
+  import_playbook: ../static-assignments/uat-webservers.yml
+
+- name: Load Balancers assignment
+  import_playbook: ../static-assignments/loadbalancers.yml
+  when: load_balancer_is_required
+ 
+- name: database
+  import_playbook: ../static-assignments/database.yml
